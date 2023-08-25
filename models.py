@@ -37,5 +37,13 @@ class Actor(Base):
     dob = Column("date_of_birth", date(), nullable=False)
     movies = relationship("movies", secondary=movie_actor, backref="The_actors")
 
+    def __repr__(self):
+        return "<Actor " \
+            + f"id={self.id}, " \
+            + f"first_name={self.first_name}" \
+            + f"last_name={self.last_name}" \
+            + f"dob={self.dob}" \
+            + ">"
+
 
 
