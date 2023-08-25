@@ -1,5 +1,5 @@
 
-from models import Movie, Actor
+from models import Movie, Actor, Movie_Actor
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 import ipdb
@@ -13,6 +13,7 @@ session = Session()
 
 session.query(Movie).delete()
 session.query(Actor).delete()
+session.query(Movie_Actor).delete()
 
 # For working with a csv file and retrieving json data
 
@@ -41,9 +42,17 @@ with open('movies.csv', 'r', encoding="ISO-8859-1") as csvfile:
             actor = Actor(
                 name=row[4]
             )
-          
-        session.add(actor)
-
         session.add(movie)
-     
+        session.add(actor)
+        session.commit()
+    for i in range(1, 1660, 1):
+        movieactors = Movie_Actor( 
+
+                                      movie_id = i,
+                                      actor_id = i,
+                                      )
+                
+
+        
+        session.add(movieactors)
         session.commit()

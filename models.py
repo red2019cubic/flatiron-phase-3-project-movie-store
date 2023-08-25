@@ -14,8 +14,9 @@ Base = declarative_base()
 
 class Movie_Actor(Base):
     __tablename__ = "movie_actor"
-    movie_id = Column(ForeignKey("movie.id"), primary_key=True)
-    actor_id = Column(ForeignKey("actor.id"), primary_key=True)
+    id = Column("id", Integer, primary_key=True)
+    movie_id = Column("movie_id", Integer,ForeignKey("movie.id"))
+    actor_id = Column("actor_id", Integer, ForeignKey("actor.id"))
   
     movie = relationship("Movie", back_populates="actors")
     actor = relationship("Actor", back_populates="movies")
