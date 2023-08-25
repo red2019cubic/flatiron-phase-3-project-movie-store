@@ -1,5 +1,5 @@
 from .base import Base
-from sqlalchemy import Table, Integer, ForeignKey, Column, String, date
+from sqlalchemy import Table, Integer, ForeignKey, Column, String
 from sqlalchemy.orm import relationship
 from .movie_actor import movie_actor
 class Actor(Base):
@@ -8,7 +8,7 @@ class Actor(Base):
     id = Column("actor_id", Integer(), primary_key=True)
     first_name = Column("first_name", String(), nullable=False)
     last_name = Column("last_name", String(), nullable=False)
-    dob = Column("date_of_birth", date(), nullable=False)
+    dob = Column("date_of_birth", Integer(), nullable=False)
     movies = relationship("movies", secondary=movie_actor, backref="The_actors")
 
     def __repr__(self):

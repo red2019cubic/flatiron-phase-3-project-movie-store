@@ -19,6 +19,6 @@ import requests
 import json
 import random
 with open('movies.csv', 'r') as csvfile:
-    csv_reader = csv.reader(csvfile, delimiter=',')
+    csv_reader = csv.reader(csvfile)
     for row in csv_reader:
         print(row)
