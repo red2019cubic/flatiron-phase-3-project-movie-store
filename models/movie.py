@@ -6,10 +6,10 @@ from .movie_actor import movie_actor
 class Movie(Base):
     __tablename__ = "movies"
 
-    id = Column("movie_id", Integer(), primary_key=True)
+    id = Column("id", Integer(), primary_key=True)
     title = Column("title", String(), nullable=False)
     year = Column("year", Integer(), nullable=False)
-    actors = relationship("actors", secondary=movie_actor, backref="The_movies")
+    actors = relationship("actors", secondary=movie_actor, backref="movies")
 
     def __repr__(self):
         return "<Movie " \

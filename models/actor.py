@@ -5,11 +5,11 @@ from .movie_actor import movie_actor
 class Actor(Base):
     __tablename__ = "actors"
 
-    id = Column("actor_id", Integer(), primary_key=True)
+    id = Column("id", Integer(), primary_key=True)
     first_name = Column("first_name", String(), nullable=False)
     last_name = Column("last_name", String(), nullable=False)
     dob = Column("date_of_birth", Integer(), nullable=False)
-    movies = relationship("movies", secondary=movie_actor, backref="The_actors")
+    movies = relationship("movies", secondary=movie_actor, backref="actors")
 
     def __repr__(self):
         return "<Actor " \
