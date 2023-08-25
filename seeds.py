@@ -1,28 +1,48 @@
-# from models import Actor, Movie
-# from sqlalchemy.orm import sessionmaker
-# from sqlalchemy import create_engine
 
+from models import Movie, Actor
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+import ipdb
 import csv
 
-# engine = create_engine("sqlite:///movie_store.db")
-# Session = sessionmaker(bind=engine)
-# session = Session()
+engine = create_engine("sqlite:///db/movie_store.db")
+Session = sessionmaker(bind=engine)
+session = Session()
+# ipdb.set_trace()
 
-# For generating Fake data: https://faker.readthedocs.io/en/master/providers.html
-# from faker import Faker
 
-# session.query(Movie).delete()
-# session.query(Actor).delete()
+session.query(Movie).delete()
+session.query(Actor).delete()
 
-# For working with an API and retrieving json data
-# import requests
-import json
-import random
-with open('movies.csv', 'r', encoding= "ISO-8859-1") as csvfile:
-    csv_reader = csv.reader(csvfile, delimiter = ';')
-    # csv_reader.__next__()
-    # csv_reader.__next__()
-    
+# For working with a csv file and retrieving json data
+
+
+with open('movies.csv', 'r', encoding="ISO-8859-1") as csvfile:
+    csv_reader = csv.reader(csvfile, delimiter=';')
+    csv_reader.__next__()
+    csv_reader.__next__()
+
     for row in csv_reader:
-        # for i in row:
-        print(row)
+        for i in row:
+
+            movie = Movie(
+                year=row[0],
+                length=row[1],
+                title=row[2],
+                subject=row[3],
+                actor=row[4],
+                actress=row[5],
+                director=row[6],
+                popularity=row[7],
+                awards=row[8],
+                image=row[9]
+            )
+
+            actor = Actor(
+                name=row[4]
+            )
+        session.add(actor)
+
+        session.add(movie)
+     
+        session.commit()
