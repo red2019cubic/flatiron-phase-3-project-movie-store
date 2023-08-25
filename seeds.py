@@ -41,6 +41,7 @@ with open('movies.csv', 'r', encoding="ISO-8859-1") as csvfile:
             actor = Actor(
                 name=row[4]
             )
+          
         session.add(actor)
 
         session.add(movie)
