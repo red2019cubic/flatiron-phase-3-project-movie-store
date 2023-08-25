@@ -1,24 +1,28 @@
-from models import Actor, Movie
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
+# from models import Actor, Movie
+# from sqlalchemy.orm import sessionmaker
+# from sqlalchemy import create_engine
 
 import csv
 
-engine = create_engine("sqlite:///movie_store.db")
-Session = sessionmaker(bind=engine)
-session = Session()
+# engine = create_engine("sqlite:///movie_store.db")
+# Session = sessionmaker(bind=engine)
+# session = Session()
 
 # For generating Fake data: https://faker.readthedocs.io/en/master/providers.html
 # from faker import Faker
 
-session.query(Movie).delete()
-session.query(Actor).delete()
+# session.query(Movie).delete()
+# session.query(Actor).delete()
 
 # For working with an API and retrieving json data
-import requests
+# import requests
 import json
 import random
-with open('movies.csv', 'r') as csvfile:
-    csv_reader = csv.reader(csvfile)
+with open('movies.csv', 'r', encoding= "ISO-8859-1") as csvfile:
+    csv_reader = csv.reader(csvfile, delimiter = ';')
+    # csv_reader.__next__()
+    # csv_reader.__next__()
+    
     for row in csv_reader:
+        # for i in row:
         print(row)
