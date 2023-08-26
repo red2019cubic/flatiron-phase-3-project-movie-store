@@ -2,7 +2,7 @@ import re
 import time
 from prettycli import red , blue, bright_green, green 
 from simple_term_menu import TerminalMenu
-from models import Movie, Actor
+from models import Movie, Actor, MoviesActors
 import pyfiglet as pyg
 
 
@@ -13,7 +13,7 @@ class Cli():
         self.clear_screen(44)
         res= pyg.figlet_format("Welcome to TThe Movie Store", font="slant") 
         print(blue(res))
-        options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie", "Delete Actor", "Update Movie", "Update Actor", "Exit"]
+        options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie", "Delete Actor", "Add Actor To Movie", "Update Actor", "Exit"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         
@@ -54,6 +54,14 @@ class Cli():
             self.handle_delete_movie(id)
             print(red("Record Deleted Successfully.."))
             self.show_menu_options()   
+        elif options[menu_entry_index] == "Add Actor To Movie":
+            actor_id = eval(input("Enter the actor id : "))
+            movie_id = eval(input("Enter the actor id : "))
+            print(green("Adding actor id number " + str(actor_id) + " to movie "))
+            time.sleep(2)
+            self.handle_add_actor_to_movie(actor_id, movie_id)
+            print(green("Actor added Successfully.."))
+            self.show_menu_options()  
         elif options[menu_entry_index] == "Search for actor by name":
             title = input("Enter the actor name: ")
             print(self.handle_search_movie_by_title(title))
@@ -78,6 +86,8 @@ class Cli():
         return Actor.add_actor(name)
     def handle_delete_movie(self, id):
         return Movie.delete_movie(id)
+    def handle_add_actor_to_movie(self, actor_id, movie_id):
+        return MoviesActors.add_actor_to_movie(actor_id, movie_id)
             
     def show_menu_options(self):
         options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie", "Delete Actor", "Update Movie", "Update Actor", "Exit"]

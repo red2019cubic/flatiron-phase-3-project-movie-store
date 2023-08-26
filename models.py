@@ -74,3 +74,8 @@ class MoviesActors(Base):
 
     movie = relationship('Movie', backref='actors')
     actor = relationship('Actor', backref='movies')
+
+    def add_actor_to_movie(movie_id, actor_id):
+        movie_actor = MoviesActors(movie_id=movie_id, actor_id=actor_id)
+        session.add(movie_actor)
+        session.commit()
