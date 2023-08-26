@@ -57,11 +57,16 @@ class Actor(Base):
         session.add(actor_name)
         session.commit()
         return session.query(cls).all()  
-
-    def delete_actor(id):
+    @classmethod
+    def delete_actor(cls, id):
         actor = session.query(Actor).filter_by(id=id).one()
         session.delete(actor)
         session.commit()
+
+    @classmethod
+    def search_actor_by_id(cls, id):
+        return session.query(Actor).filter_by(id=id).one()
+
     def __repr__(self):
         return "<Actor " \
             + f"id={self.id}, " \
