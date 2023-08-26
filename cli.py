@@ -33,8 +33,13 @@ class Cli():
             
             self.clear_screen(1)
             self.show_menu_options()
-            self.clear_screen(3)
-            self.show_menu_options()
+        elif options[menu_entry_index] == "Add Actor":
+            name = input("Enter the actor name : ")
+            print(green("Saving " + name + " to DB......"))
+            time.sleep(2)
+            self.handle_add_actor(name)
+            print(green("Record Created Successfully.."))
+            self.show_menu_options()  
         elif options[menu_entry_index] == "Search for actor by name":
             title = input("Enter the actor name: ")
             print(self.handle_search_movie_by_title(title))
@@ -55,6 +60,8 @@ class Cli():
         return actors_list
     def handle_add_movie(self, title):
         return Movie.add_movie(title)
+    def handle_add_actor(self, name):
+        return Actor.add_actor(name)
             
     def show_menu_options(self):
         options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie", "Delete Actor", "Update Movie", "Update Actor", "Exit"]

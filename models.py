@@ -42,7 +42,13 @@ class Actor(Base):
     @classmethod
     def view_all_actors(cls):
         return session.query(cls).all()
+    @classmethod
+    def add_actor(cls, name):
+        actor_name = Actor(name=name)
+        session.add(actor_name)
+        session.commit()
         
+        return session.query(cls).all()  
     def __repr__(self):
         return "<Actor " \
             + f"id={self.id}, " \
