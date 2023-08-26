@@ -88,3 +88,11 @@ class MoviesActors(Base):
         movie_actor = MoviesActors(movie_id=movie_id, actor_id=actor_id)
         session.add(movie_actor)
         session.commit()
+    def list_movies_and_actors():
+        movie_actor_list = session.query(MoviesActors).all()
+        return movie_actor_list
+    def __repr__(self):
+        return "<MoviesActors " \
+            + f"actor_id={self.actor_id}, " \
+            + f"movie_id={self.movie_id}" \
+            + ">"
