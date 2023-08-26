@@ -21,6 +21,11 @@ class Movie(Base):
         movie_title = Movie(title=title)
         session.add(movie_title)
         session.commit()
+
+    def delete_movie(id):
+        movie = session.query(Movie).filter_by(id=id).one()
+        session.delete(movie)
+        session.commit()
         
 
     def __repr__(self):
