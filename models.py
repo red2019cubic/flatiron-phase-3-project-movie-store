@@ -27,6 +27,10 @@ class Movie(Base):
         session.delete(movie)
         session.commit()
         
+    def search_movie_by_id(id):
+        return session.query(Movie).filter_by(id=id).one()
+
+        
 
     def __repr__(self):
         return "<Movie " \

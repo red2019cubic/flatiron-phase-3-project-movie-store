@@ -13,7 +13,7 @@ class Cli():
         self.clear_screen(44)
         res= pyg.figlet_format("Welcome to TThe Movie Store", font="slant") 
         print(blue(res))
-        options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie", "Delete Actor", "Add Actor To Movie", "Update Actor", "Exit"]
+        options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie", "Delete Actor", "Add Actor To Movie", "Search For Movie By Id", "Exit"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         
@@ -62,9 +62,12 @@ class Cli():
             self.handle_add_actor_to_movie(actor_id, movie_id)
             print(green("Actor added Successfully.."))
             self.show_menu_options()  
-        elif options[menu_entry_index] == "Search for actor by name":
-            title = input("Enter the actor name: ")
-            print(self.handle_search_movie_by_title(title))
+        elif options[menu_entry_index] == "Search For Movie By Id":
+            movie_id = input("Enter the movie id: ")
+            print(green("Searching......."))
+            time.sleep(2)
+            print(green("Movie Found with the id " + str(movie_id)))
+            print(self.handle_search_movie_by_id(movie_id))
             self.show_menu_options()
         else:
             self.exit()
@@ -88,6 +91,8 @@ class Cli():
         return Movie.delete_movie(id)
     def handle_add_actor_to_movie(self, actor_id, movie_id):
         return MoviesActors.add_actor_to_movie(actor_id, movie_id)
+    def handle_search_movie_by_id(self, id):
+        return Movie.search_movie_by_id(id)
             
     def show_menu_options(self):
         options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie", "Delete Actor", "Update Movie", "Update Actor", "Exit"]
