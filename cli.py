@@ -13,7 +13,7 @@ class Cli():
         
     def start(self):
         self.clear_screen(44)
-        res= pyg.figlet_format("Welcome to Movie Store", font="slant") 
+        res= pyg.figlet_format("Welcome to TThe Movie Store", font="slant") 
         print(res)
         options = ["View All Movies", "Search for movie by title", "search for actor by name", "Delete Movie", "Add Movie", "Delete Actor"]
         terminal_menu = TerminalMenu(options)
@@ -41,7 +41,8 @@ class Cli():
         
     
     def exit(self):
-        print("Bye!")
+        res= pyg.figlet_format("Bye! Thanks for visiting our Movie Store", font="slant") 
+        print(res)
     
     
 app = Cli()
