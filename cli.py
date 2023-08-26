@@ -1,6 +1,6 @@
 import re
 import time
-from prettycli import red, blue, bright_green, green, bright_yellow, bright_magenta
+from prettycli import red, blue, bright_green, green, bright_magenta
 from simple_term_menu import TerminalMenu
 from models import Movie, Actor, MoviesActors
 import pyfiglet as pyg
@@ -94,7 +94,8 @@ class Cli():
                     self.menu_option()
                     option_id = eval(input("Select an option to continue: "))
                 elif options[option_id] == "Exit":
-                    self.exit()
+                     self.exit()
+        self.exit()
 
             
     
@@ -102,7 +103,7 @@ class Cli():
         options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie",
                    "Delete Actor", "Add Actor To Movie", "Search For Movie By Id", "Search For Actor By Id", "list movies by actor name", "Exit"]
         for i in range(len(options)):
-            print(bright_yellow(str(i) + " : " + options[i]))
+            print(bright_magenta("              " + str(i) + " : " + options[i]))
             
 
     def exit(self):
