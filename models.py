@@ -32,10 +32,10 @@ class Actor(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
 
-    @classmethod
-    def view_all_movies(cls):
-        session.query(Actor).all()
 
+    @classmethod
+    def view_all_actors(cls):
+        return session.query(Actor).all()
         
     def __repr__(self):
         return "<Actor " \
