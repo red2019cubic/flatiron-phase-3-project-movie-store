@@ -20,31 +20,31 @@ class Cli():
         
         while options[option_id] != "Exit":
 
-            if options[option_id] == "View All Movies":
+                if options[option_id] == "View All Movies":
                     print(self.handle_view_movies())
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
+                    option_id = eval(input("Select an option to continue: "))
                     
-            elif options[option_id] == "View All Actors":
+                elif options[option_id] == "View All Actors":
                     print(self.handle_view_actors())
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
-            elif options[option_id] == "Add Movie":
+                    option_id = eval(input("Select an option to continue: "))
+                elif options[option_id] == "Add Movie":
                     title = input("Enter the movie title: ")
                     print(green("Saving " + title + " to DB......"))
                     self.handle_add_movie(title)
                     print(green("Record Created Successfully.."))
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
-            elif options[option_id] == "Add Actor":
+                    option_id = eval(input("Select an option to continue: "))
+                elif options[option_id] == "Add Actor":
                     name = input("Enter the actor name : ")
                     print(green("Saving " + name + " to DB......"))
                     time.sleep(2)
                     self.handle_add_actor(name)
                     print(green("Record Created Successfully.."))
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
-            elif options[option_id] == "Delete Movie":
+                    option_id = eval(input("Select an option to continue: "))
+                elif options[option_id] == "Delete Movie":
                     id = eval(input("Enter the movie id : "))
                     print(green("Deleting movie id number" +
                                 str(id) + " record from DB......"))
@@ -52,8 +52,8 @@ class Cli():
                     self.handle_delete_movie(id)
                     print(red("Record Deleted Successfully.."))
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
-            elif options[option_id] == "Delete Actor":
+                    option_id = eval(input("Select an option to continue: "))
+                elif options[option_id] == "Delete Actor":
                     id = eval(input("Enter the actor id : "))
                     print(green("Deleting actor id number " +
                                 str(id) + " record from DB......"))
@@ -61,8 +61,8 @@ class Cli():
                     self.handle_delete_actor(id)
                     print(red("Record Deleted Successfully.."))
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
-            elif options[option_id] == "Add Actor To Movie":
+                    option_id = eval(input("Select an option to continue: "))
+                elif options[option_id] == "Add Actor To Movie":
                     actor_id = eval(input("Enter the actor id : "))
                     movie_id = eval(input("Enter the actor id : "))
                     print(green("Adding actor id number " +
@@ -71,34 +71,33 @@ class Cli():
                     self.handle_add_actor_to_movie(actor_id, movie_id)
                     print(green("Actor added Successfully.."))
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
-            elif options[option_id] == "Search For Movie By Id":
+                    option_id = eval(input("Select an option to continue: "))
+                elif options[option_id] == "Search For Movie By Id":
                     movie_id = input("Enter the movie id: ")
                     print(green("Searching......."))
                     time.sleep(2)
                     print(green("Movie Found with the id " + str(movie_id)))
                     print(self.handle_search_movie_by_id(movie_id))
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
-            elif options[option_id] == "Search For Actor By Id":
+                    option_id = eval(input("Select an option to continue: "))
+                elif options[option_id] == "Search For Actor By Id":
                     actor_id = input("Enter the actor id: ")
                     print(green("Searching......."))
                     time.sleep(2)
                     print(green("Actor Found with the id " + str(actor_id)))
                     print(self.handle_search_actor_by_id(actor_id))
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
-            elif options[option_id] == "list movies by actor name":
+                    option_id = eval(input("Select an option to continue: "))
+                elif options[option_id] == "list movies by actor name":
                     
                     print(self.handle_list_movies_and_actors())
                     self.menu_option()
-                    option_id = eval(input("Select an option to continue(0 to 10): "))
-            elif options[option_id] == "Exit":
+                    option_id = eval(input("Select an option to continue: "))
+                elif options[option_id] == "Exit":
                     self.exit()
 
-            self.exit()
-        else:
-            print("please enter a number less than or equal to 10")
+            
+    
     def menu_option(self):
         options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie",
                    "Delete Actor", "Add Actor To Movie", "Search For Movie By Id", "Search For Actor By Id", "list movies by actor name", "Exit"]
