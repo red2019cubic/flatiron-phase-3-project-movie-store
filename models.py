@@ -12,9 +12,10 @@ class Movie(Base):
     __tablename__ = 'movies'
     id = Column(Integer, primary_key=True)
     title = Column(String)
+    
     @classmethod
     def view_all_movies(cls):
-        session.query(Movie).all()
+        return session.query(Movie).all()
 
     def __repr__(self):
         return "<Movie " \
