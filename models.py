@@ -2,6 +2,7 @@
 from sqlalchemy import Integer, Column, String, Table, ForeignKey, create_engine
 from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy.orm import sessionmaker
+import ipdb
 engine = create_engine("sqlite:///db/movie_store.db")
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -13,7 +14,7 @@ class Movie(Base):
     title = Column(String)
     @classmethod
     def view_all_movies(cls):
-        session.query(cls).all()
+        session.query(Movie).all()
 
     def __repr__(self):
         return "<Movie " \
@@ -21,7 +22,7 @@ class Movie(Base):
             + f"title={self.title}, " \
             + ">"
    
-
+# ipdb.set_trace()
 # actors.py
 
 
@@ -32,7 +33,7 @@ class Actor(Base):
 
     @classmethod
     def view_all_movies(cls):
-        session.query(cls).all()
+        session.query(Actor).all()
 
         
     def __repr__(self):

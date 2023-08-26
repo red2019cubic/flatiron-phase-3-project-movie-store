@@ -3,6 +3,7 @@ import time
 from prettycli import red
 from simple_term_menu import TerminalMenu
 from models import Movie, Actor
+import pyfiglet as pyg
 
 
 class Cli():
@@ -12,6 +13,8 @@ class Cli():
         
     def start(self):
         self.clear_screen(44)
+        res= pyg.figlet_format("Welcome to Movie Store", font="slant") 
+        print(res)
         options = ["View All Movies", "Search for movie by title", "search for actor by name", "Delete Movie", "Add Movie", "Delete Actor"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
@@ -25,19 +28,10 @@ class Cli():
         print("\n" * lines)
         
     def handle_view_movies(self):
-        title = input("Please enter your email:\n\n")
         
-        if title in Movie:
-            print("Find a user by email")
+        movies = Movie.view_all_movies
+        return movies
             
-            
-            self.show_owner_options()
-            
-        else:
-            print(red("Invalid email. Please try again!"))
-            time.sleep(2)
-            self.start()
-        
     def show_owner_options(self):
         options = ["My Toys", "New Toy", "Edit My Info", "Exit"]
         terminal_menu = TerminalMenu(options)
