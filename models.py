@@ -16,6 +16,9 @@ class Movie(Base):
     @classmethod
     def view_all_movies(cls):
         return session.query(Movie).all()
+    @classmethod
+    def search_movie_by_title(cls, title):
+        return session.query(Movie).filter_by(title=title).one()
 
     def __repr__(self):
         return "<Movie " \

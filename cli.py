@@ -23,6 +23,10 @@ class Cli():
         elif options[menu_entry_index] == "View All Actors":
             print(self.handle_view_actors())
             self.show_menu_options()
+        elif options[menu_entry_index] == "Search for movie by title":
+            title = input("enter the movie title: ")
+            print(self.handle_search_movie_by_title(title))
+            self.show_menu_options()
         else:
             self.exit()
     
@@ -32,11 +36,13 @@ class Cli():
         
     def handle_view_movies(self):
         movies_list = Movie.view_all_movies()
-        return movies_list
+        return movies_list 
     
     def handle_view_actors(self):
         actors_list = Actor.view_all_actors()
         return actors_list
+    def handle_search_movie_by_title(self,title):
+        return Movie.search_movie_by_title(title)
             
     def show_menu_options(self):
         options = ["View All Movies","View All Actors", "Search for movie by title", "search for actor by name", "Delete Movie", "Add Movie", "Delete Actor", "Exit"]
