@@ -52,8 +52,12 @@ class Actor(Base):
         actor_name = Actor(name=name)
         session.add(actor_name)
         session.commit()
-        
         return session.query(cls).all()  
+
+    def delete_actor(id):
+        actor = session.query(Actor).filter_by(id=id).one()
+        session.delete(actor)
+        session.commit()
     def __repr__(self):
         return "<Actor " \
             + f"id={self.id}, " \

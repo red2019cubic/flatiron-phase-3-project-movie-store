@@ -42,11 +42,18 @@ class Cli():
             self.show_menu_options()  
         elif options[menu_entry_index] == "Delete Movie":
             id = eval(input("Enter the movie id : "))
-            print(green("Deleting movie id " + str(id) + " record from DB......"))
+            print(green("Deleting movie id number" + str(id) + " record from DB......"))
             time.sleep(2)
             self.handle_delete_movie(id)
             print(red("Record Deleted Successfully.."))
-            self.show_menu_options()  
+            self.show_menu_options() 
+        elif options[menu_entry_index] == "Delete Actor":
+            id = eval(input("Enter the actor id : "))
+            print(green("Deleting actor id number " + str(id) + " record from DB......"))
+            time.sleep(2)
+            self.handle_delete_movie(id)
+            print(red("Record Deleted Successfully.."))
+            self.show_menu_options()   
         elif options[menu_entry_index] == "Search for actor by name":
             title = input("Enter the actor name: ")
             print(self.handle_search_movie_by_title(title))
