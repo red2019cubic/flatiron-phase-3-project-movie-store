@@ -9,6 +9,8 @@ alembic = "*"
 ipdb = "*"
 faker = "*"
 pyfiglet = "*"
+prettycli = "*"
+simple-term-menu = "*"
 
 [dev-packages]
 
