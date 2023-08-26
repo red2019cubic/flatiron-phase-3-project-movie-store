@@ -15,10 +15,13 @@ class Movie(Base):
     
     @classmethod
     def view_all_movies(cls):
-        return session.query(Movie).all()
+        return session.query(cls).all()
     @classmethod
-    def search_movie_by_title(cls, title):
-        return session.query(Movie).filter_by(title=title).one()
+    def add_movie(cls, title):
+        movie_title = Movie(title=title)
+        session.add(movie_title)
+        session.commit()
+        
 
     def __repr__(self):
         return "<Movie " \
@@ -38,7 +41,7 @@ class Actor(Base):
 
     @classmethod
     def view_all_actors(cls):
-        return session.query(Actor).all()
+        return session.query(cls).all()
         
     def __repr__(self):
         return "<Actor " \

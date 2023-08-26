@@ -1,6 +1,6 @@
 import re
 import time
-from prettycli import red , blue, bright_green
+from prettycli import red , blue, bright_green, green 
 from simple_term_menu import TerminalMenu
 from models import Movie, Actor
 import pyfiglet as pyg
@@ -13,7 +13,7 @@ class Cli():
         self.clear_screen(44)
         res= pyg.figlet_format("Welcome to TThe Movie Store", font="slant") 
         print(blue(res))
-        options = ["View All Movies", "View All Actors", "Search for movie by title", "search for actor by name", "Delete Movie", "Add Movie", "Delete Actor", "Exit"]
+        options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie", "Delete Actor", "Update Movie", "Update Actor", "Exit"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         
@@ -23,8 +23,20 @@ class Cli():
         elif options[menu_entry_index] == "View All Actors":
             print(self.handle_view_actors())
             self.show_menu_options()
-        elif options[menu_entry_index] == "Search for movie by title":
-            title = input("enter the movie title: ")
+        elif options[menu_entry_index] == "Add Movie":
+            title = input("Enter the movie title: ")
+            print(title)
+            print(Movie)
+            print(green("Saving " + title + " to DB......"))
+            self.handle_add_movie(title)
+            print(green("Record Created Successfully.."))
+            
+            self.clear_screen(1)
+            self.show_menu_options()
+            self.clear_screen(3)
+            self.show_menu_options()
+        elif options[menu_entry_index] == "Search for actor by name":
+            title = input("Enter the actor name: ")
             print(self.handle_search_movie_by_title(title))
             self.show_menu_options()
         else:
@@ -41,11 +53,11 @@ class Cli():
     def handle_view_actors(self):
         actors_list = Actor.view_all_actors()
         return actors_list
-    def handle_search_movie_by_title(self,title):
-        return Movie.search_movie_by_title(title)
+    def handle_add_movie(self, title):
+        return Movie.add_movie(title)
             
     def show_menu_options(self):
-        options = ["View All Movies","View All Actors", "Search for movie by title", "search for actor by name", "Delete Movie", "Add Movie", "Delete Actor", "Exit"]
+        options = ["View All Movies", "View All Actors", "Add Movie", "Add Actor", "Delete Movie", "Delete Actor", "Update Movie", "Update Actor", "Exit"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         print(options[menu_entry_index])
